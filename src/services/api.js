@@ -89,6 +89,29 @@ export async function getTVByGenre(genreId, page = 1) {
   }
 }
 
+export async function getPopularTVShows() {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`,
+    );
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error("Error fetching popular TV shows:", error);
+    return [];
+  }
+}
+
+export const searchTVShows = async (query) => {
+  const response = await fetch(
+    `${BASE_URL}/search/tv?api_key=${API_KEY}&query=${encodeURIComponent(
+      query,
+    )}`,
+  );
+  const data = await response.json();
+  return data.results;
+};
+
 export async function getPopularMovies() {
   try {
     const response = await fetch(

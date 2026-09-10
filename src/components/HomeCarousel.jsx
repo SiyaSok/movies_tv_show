@@ -20,6 +20,8 @@ const HomeCarousel = ({ movies = [], interval = 6000 }) => {
 
   if (movies.length === 0) return null;
 
+  console.log("HomeCarousel movies:", movies);
+
   return (
     <div
       className='relative h-[500px] w-full aspect-video overflow-hidden mt-2
@@ -41,7 +43,7 @@ const HomeCarousel = ({ movies = [], interval = 6000 }) => {
 
           <div className='absolute bottom-6 left-6 right-6'>
             <h3 className="font-['Bebas_Neue'] text-2xl md:text-4xl text-[#f3f1ea] tracking-wide">
-              {movie.title}
+              {movie.title ? movie.title : movie.name}
             </h3>
           </div>
         </Link>
