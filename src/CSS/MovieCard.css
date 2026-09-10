@@ -1,0 +1,162 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.movie-card {
+  --gold: #e8b34a;
+  --ticket-red: #d64545;
+  position: relative;
+  background-color: #111113;
+  border: 1px solid #242327;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.movie-card:hover,
+.movie-card:focus-within {
+  border-color: #38363c;
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movie-card,
+  .movie-poster img {
+    transition: none !important;
+  }
+}
+
+.movie-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  overflow: hidden;
+  background-color: #0a0a0b;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster img {
+  transform: scale(1.06);
+}
+
+/* permanent legibility gradient, not a hover-only overlay */
+.poster-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+/* ticket-stub rating badge: a pinned flag with a notched edge */
+.rating-stub {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--gold);
+  color: #1a1204;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 5px 10px 8px;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #f2f0ea;
+  background-color: rgba(10, 10, 11, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.favorite-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.favorite-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.favorite-btn:active {
+  transform: scale(0.9);
+}
+
+.favorite-btn.active {
+  color: var(--ticket-red);
+}
+
+.movie-info {
+  padding: 0.85rem 1rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.movie-info h3 {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: #f2f0ea;
+  margin: 0;
+}
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8a8a8f;
+  font-size: 0.82rem;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 10px;
+  background-color: #3a393e;
+}
+
+@media (max-width: 768px) {
+  .movie-info {
+    padding: 0.7rem 0.85rem 0.85rem;
+  }
+
+  .movie-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .favorite-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
