@@ -1,6 +1,5 @@
 /** @format */
 
-import "../css/Favorites.css";
 import MovieCard from "../components/MovieCard";
 import { useMovieContext } from "../context/MovieContext";
 

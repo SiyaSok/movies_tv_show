@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-
 import MovieCard from "../components/MovieCard";
 import Search from "../components/Search";
-
 import { getPopularMovies, searchMovies } from "../services/api";
 import Moives from "../components/Movies";
 import HomeCarousel from "../components/HomeCarousel";

@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-
 import Search from "../components/Search";
-
 import { getPopularMovies, searchMovies } from "../services/api";
 import TVShows from "../components/TVShows";
 

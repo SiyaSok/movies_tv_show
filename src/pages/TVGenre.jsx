@@ -1,9 +1,7 @@
 /** @format */
 
 import { useQuery } from "@tanstack/react-query";
-
 import MovieCard from "../components/MovieCard";
-
 import { getTVByGenre } from "../services/api";
 import { useParams } from "react-router";
 import Pagination from "../components/Pagination";
