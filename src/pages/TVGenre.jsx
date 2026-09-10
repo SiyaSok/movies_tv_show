@@ -2,10 +2,11 @@
 
 import { useQuery } from "@tanstack/react-query";
 import MovieCard from "../components/MovieCard";
-import { getTVByGenre } from "../services/api";
 import { useParams } from "react-router";
 import Pagination from "../components/Pagination";
 import { useState } from "react";
+import Loader from "../components/Loader";
+import { getTVByGenre } from "../services/tvshowsApi";
 
 const TVGenre = () => {
   const params = useParams();
@@ -37,9 +38,7 @@ const TVGenre = () => {
         </h2>
         {/* single stable status slot instead of stacked, independently-flickering messages */}
         <div className='min-h-6 mb-4' role='status' aria-live='polite'>
-          {isLoading && (
-            <p className='text-sm text-[#93919a]'>"Loading TV shows…"</p>
-          )}
+          {isLoading && <Loader />}
 
           {error && (
             <p className='text-sm text-[#d64545]'>

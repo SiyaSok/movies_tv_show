@@ -1,7 +1,7 @@
 /** @format */
 
 import { useQuery } from "@tanstack/react-query";
-import { getMovieReviews } from "../services/api";
+import { getMovieReviews } from "../services/moviesApi";
 import { motion, AnimatePresence } from "framer-motion";
 import ReviewItem from "./ReviewItem";
 import ReviewSkeleton from "./ReviewSkeleton";
@@ -54,23 +54,7 @@ const MovieReviews = ({ id }) => {
     );
   }
 
-  if (reviews.length === 0) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className='flex flex-col items-center justify-center py-16 px-4 text-center border border-dashed border-white/10 rounded-2xl'>
-        <div className='w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4'>
-          <MessageCircle size={32} className='text-[#6b6974]' />
-        </div>
-        <p className='text-sm font-medium text-[#93919a]'>No reviews yet</p>
-        <p className='text-xs text-[#6b6974] mt-1 max-w-sm'>
-          Be the first to share your thoughts about this movie!
-        </p>
-      </motion.div>
-    );
-  }
-
+  if (reviews.length === 0) return null;
   return (
     <div className='min-h-screen bg-[#0c0c0d] text-[#f3f1ea]'>
       {/* Back link */}

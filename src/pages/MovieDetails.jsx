@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
-import { getMovieDetails } from "../services/api";
+import { getMovieDetails } from "../services/moviesApi";
 import MovieInfo from "../components/MovieInfo";
 import MovieSkeleton from "../components/MovieSkeleton";
 import MovieVideo from "../components/MoveVideo";

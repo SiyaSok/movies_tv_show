@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import MovieCard from "../components/MovieCard";
-import { getMoviesByGenre } from "../services/api";
+import { getMoviesByGenre } from "../services/moviesApi";
 import { useParams } from "react-router";
 import { useState } from "react";
 import Pagination from "../components/Pagination";

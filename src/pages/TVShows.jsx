@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import Search from "../components/Search";
-import { getPopularMovies, searchMovies } from "../services/api";
+import { getPopularMovies, searchMovies } from "../services/moviesApi";
 import TVShows from "../components/TVShows";
 
 const Home = () => {
@@ -65,7 +65,6 @@ const Home = () => {
     <div className='min-h-screen bg-[#0c0c0d] text-[#f3f1ea]'>
       {/* Back link */}
       <div className='container mx-auto px-4 py-5'>
-        {" "}
         <Search
           searchQuery={searchQuery}
           setSearchQuery={handleSearchQueryChange}

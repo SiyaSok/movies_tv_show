@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { ChevronDown } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { getMovieGenres, getTvGenres } from "../services/api";
+import { getMovieGenres } from "../services/moviesApi";
+import { getTvGenres } from "../services/tvshowsApi";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);

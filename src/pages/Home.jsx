@@ -4,13 +4,11 @@ import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import MovieCard from "../components/MovieCard";
 import Search from "../components/Search";
-import {
-  getPopularMovies,
-  getPopularTVShows,
-  searchMovies,
-  searchTVShows,
-} from "../services/api";
+
 import HomeCarousel from "../components/HomeCarousel";
+import Loader from "../components/Loader";
+import { getPopularMovies, searchMovies } from "../services/moviesApi";
+import { getPopularTVShows, searchTVShows } from "../services/tvshowsApi";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -126,11 +124,7 @@ const Home = () => {
         </h2>
         {/* single stable status slot instead of stacked, independently-flickering messages */}
         <div className='min-h-6 mb-4' role='status' aria-live='polite'>
-          {isLoading && (
-            <p className='text-sm text-[#93919a]'>
-              {hasSearched ? "Searching…" : "Loading popular movies…"}
-            </p>
-          )}
+          {isLoading && <Loader />}
 
           {error && (
             <p className='text-sm text-[#d64545]'>
@@ -160,11 +154,7 @@ const Home = () => {
         </h2>
         {/* single stable status slot instead of stacked, independently-flickering messages */}
         <div className='min-h-6 mb-4' role='status' aria-live='polite'>
-          {isLoadingTv && (
-            <p className='text-sm text-[#93919a]'>
-              {hasSearched ? "Searching…" : "Loading popular TV shows…"}
-            </p>
-          )}
+          {isLoadingTv && <Loader />}
 
           {errorTv && (
             <p className='text-sm text-[#d64545]'>
@@ -183,7 +173,7 @@ const Home = () => {
         {!isLoadingTv && !errorTv && tvShows.length > 0 && (
           <div className='grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(170px,1fr))] gap-3.5 sm:gap-5 mt-4'>
             {tvShows.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+              <MovieCard key={movie.id} movie={movie} isTVShow={true} />
             ))}
           </div>
         )}

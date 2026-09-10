@@ -4,7 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import MovieCard from "./MovieCard";
 
-import { getTvShows } from "../services/api";
+import Loader from "./Loader";
+import { getTvShows } from "../services/tvshowsApi";
 
 const TVShows = () => {
   const {
@@ -16,16 +17,12 @@ const TVShows = () => {
     queryFn: getTvShows,
   });
 
-  console.log("TV Shows Data:", tvShows);
-
   return (
     <div className='min-h-screen bg-[#0c0c0d] text-[#f3f1ea]'>
       {/* Back link */}
       <div className='container mx-auto'>
         <div className='min-h-6 mb-4' role='status' aria-live='polite'>
-          {isLoading && (
-            <p className='text-sm text-[#93919a]'>"Loading TV shows…"</p>
-          )}
+          {isLoading && <Loader />}
 
           {error && (
             <p className='text-sm text-[#d64545]'>

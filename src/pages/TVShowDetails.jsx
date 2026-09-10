@@ -2,11 +2,11 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
-import { getTVShowDetails } from "../services/api";
 import MovieInfo from "../components/MovieInfo";
 import MovieSkeleton from "../components/MovieSkeleton";
 import MovieVideo from "../components/MoveVideo";
 import MovieReviews from "../components/MovieReviews";
+import { getTVShowDetails } from "../services/tvshowsApi";
 
 const TVShowDetails = () => {
   const params = useParams();
@@ -65,10 +65,11 @@ const TVShowDetails = () => {
     );
   }
 
+  console.log("TVShowDetails:", TVShowDetails); // Log the TV show details to the console
   return (
     <>
-      <MovieInfo movie={TVShowDetails} />
-      <MovieVideo id={params.id} />
+      <MovieInfo movie={TVShowDetails} isTVShow={true} />
+      <MovieVideo id={params.id} isTVShow={true} />
       <MovieReviews id={params.id} />
     </>
   );

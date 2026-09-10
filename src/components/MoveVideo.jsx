@@ -1,29 +1,33 @@
 /** @format */
 
 import { useQuery } from "@tanstack/react-query";
-import { getMovieVideos } from "../services/api";
+import Loader from "./Loader";
+import { getTvVideos } from "../services/tvshowsApi";
+import { getMovieVideos } from "../services/moviesApi";
 
 /** @format */
-const MovieVideo = ({ id }) => {
+const MovieVideo = ({ id, isTVShow = false }) => {
   const {
     data: movieVideo,
     isLoading: isLoading,
     error: Error,
   } = useQuery({
     queryKey: ["movieVideo", id],
-    queryFn: () => getMovieVideos(id),
+    queryFn: isTVShow ? () => getTvVideos(id) : () => getMovieVideos(id),
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (Error) {
     return <div>Error loading video: {Error.message}</div>;
   }
 
+  console.log("Movie Video Data:", movieVideo);
+
   const OfficialTrailer = movieVideo.results.find(
-    (video) => video.type === "Trailer" && video.official === true,
+    (video) => video.type === "Trailer",
   );
 
   const videoKey = OfficialTrailer ? OfficialTrailer.key : null;
